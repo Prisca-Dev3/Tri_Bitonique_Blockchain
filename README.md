@@ -1,8 +1,6 @@
 # TP2 — Tri Bitonique & Minage de Blockchain (OCaml / Lean 4 / OpenQASM)
 
-Implémentation pédagogique en trois langages, pensée pour être **facile à
-relire et à maîtriser**, pas pour être la plus courte ou la plus optimisée.
-
+Implémentation pédagogique en trois langages.
 ## Structure du projet
 
 ```
@@ -50,22 +48,18 @@ ocaml bitonic_sort.ml
 ocaml blockchain_mining.ml
 ```
 
-**Le `Makefile`** (à la racine) ne remplace pas cette étape : il sert à
-autre chose. C'est une convention académique — un correcteur ou un
-coéquipier qui récupère le projet veut souvent tout compiler d'un coup,
-sans connaître les commandes OCaml exactes :
+**Le `Makefile`** (à la racine) ne remplace pas cette étape 
 
 ```bash
 make          # compile (ou exécute en fallback) les deux fichiers
 make clean    # supprime les fichiers générés
 ```
 
-En résumé : `ocaml fichier.ml` pour toi (pédagogique, tu vois chaque
-étape) ; `make` pour la remise du projet (automatisation, standard des
+En résumé : `ocaml fichier.ml` pour visualiser etape par etape; `make` pour l'automatisation,standard des
 livrables C/OCaml).
 
-**Pour t'entraîner à maîtriser le code**, relis dans cet ordre :
-1. `compare_and_swap` (la brique de base — une seule comparaison)
+**Pour maîtriser le code**, relissez dans cet ordre :
+1. `compare_and_swap` (la brique de base )
 2. `bitonic_merge` (comment "nettoyer" une suite déjà bitonique)
 3. `bitonic_sort_rec` (comment *créer* une suite bitonique puis la nettoyer)
 
@@ -88,14 +82,14 @@ lean lean/BlockchainMining.lean
 Les fichiers compilent syntaxiquement. Les théorèmes de correction
 (`trierBitonique_trie`, `trierBitonique_permutation`, `fraude_detectee`)
 sont **énoncés** avec `sorry` : c'est volontaire et expliqué dans le
-rapport — l'objectif du TP est de maîtriser la formulation formelle de
+rapport,l'objectif du TP est de maîtriser la formulation formelle de
 la spécification, pas de produire une preuve Mathlib complète (qui
 dépasserait largement le cadre d'un TP2).
 
 ## 3. OpenQASM — exécuter
 
 Un fichier `.qasm` n'est qu'une **description** de circuit : il faut un
-simulateur pour l'exécuter et lire le résultat des mesures — c'est le
+simulateur pour l'exécuter et lire le résultat des mesures,c'est donc le
 rôle de `openqasm/simulate_qasm.py`, qui charge et simule les deux
 circuits avec Qiskit (1024 répétitions chacun) :
 
@@ -116,7 +110,7 @@ Ce circuit de tri a été **vérifié exhaustivement** sur les 16 entrées
 possibles de {0,1}⁴ (voir le commentaire en tête de
 `bitonic_sort.qasm`) : la version d'uncompute des ancillas y est
 correcte (les copies temporaires sont défaites *avant* le swap, pas
-après — piège classique de la conception de circuits réversibles,
+après, le piège classique de la conception de circuits réversibles,
 expliqué en détail dans le rapport).
 
 Alternative : copier-coller le contenu d'un fichier `.qasm` dans
@@ -131,4 +125,4 @@ quantique (section OpenQASM).
 
 ## Auteure
 
-Merveille Prisca — Licence 3 Informatique, Université de Yaoundé I — INF3421.
+Merveille Prisca, Licence 3 Informatique, Université de Yaoundé I — INF3421.
